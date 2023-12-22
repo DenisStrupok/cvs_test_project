@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">cvs_test_project</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_data">Data</string>
+    <string name="common_title">Title</string>
 </resources>
