@@ -22,6 +22,7 @@ class SharedViewModel : ViewModel() {
 
     fun getMovie(title: String) {
         _movie.value = listMovies.value?.find { it.title == title }
+        _isAdded.value = _movie.value?.isWatched
     }
 
 
