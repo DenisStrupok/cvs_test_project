@@ -3,4 +3,16 @@
     <string name="common_cancel">Cancel</string>
     <string name="common_data">Data</string>
     <string name="common_title">Title</string>
+    <string name="common_movies">Movies</string>
+    <string name="common_sort">Sort</string>
+    <string name="common_details">Details</string>
+    
+    <string name="detail_short_description">Short description</string>
+    <string name="genre">Genre</string>
+    <string name="released_date_title">Released date</string>
+    <string name="rating_result">%.1f/</string>
+    <string name="rating_ten">10</string>
+    <string name="add_to_watchlist">Add to watchlist</string>
+    <string name="remove_from_watchlist">Remove from watchlist</string>
+    <string name="on_my_watchlist">ON MY WATCHLIST</string>
 </resources>

@@ -9,5 +9,17 @@
         android:id="@+id/moviesFragment"
         android:name="com.cvs.test.project.features.movies.MoviesFragment"
         android:label="MoviesFragment"
-        tools:layout="@layout/fragment_movies"/>
+        tools:layout="@layout/fragment_movies">
+        <action
+            android:id="@+id/actionOpenDetailMovieFragment"
+            app:destination="@id/detailMovieFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.cvs.test.project.features.detail.DetailMovieFragment"
+        android:label="DetailMovieFragment" />
 </navigation>

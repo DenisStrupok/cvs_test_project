@@ -1,30 +1,54 @@
-package com.cvs.test.project.features.movies
+package com.cvs.test.project.features.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cvs.test.project.R
-import com.cvs.test.project.features.movies.MoviesFragment.Companion.SORT_TYPE_DATA
-import com.cvs.test.project.features.movies.MoviesFragment.Companion.SORT_TYPE_TITLE
+import com.cvs.test.project.features.movies.MoviesFragment
 import com.cvs.test.project.models.MovieModel
 
-class MoviesVM : ViewModel() {
+class SharedViewModel : ViewModel() {
 
-    private val _listMovies = MutableLiveData<MutableList<MovieModel>>()
+    private val _listMovies = MutableLiveData<MutableList<MovieModel>>().apply {
+        value = mutableListOf()
+    }
     val listMovies: LiveData<MutableList<MovieModel>> = _listMovies
+
+    private val _movie = MutableLiveData<MovieModel>()
+    val movie: LiveData<MovieModel> = _movie
+
+    private val _isAdded = MutableLiveData(false)
+    val isAdd: LiveData<Boolean> = _isAdded
+
+    fun getMovie(title: String) {
+        _movie.value = listMovies.value?.find { it.title == title }
+    }
+
 
     fun sortList(type: String) {
         when (type) {
-            SORT_TYPE_TITLE -> {
+            MoviesFragment.SORT_TYPE_TITLE -> {
                 _listMovies.value?.sortBy { it.title }
                 _listMovies.value = _listMovies.value
             }
-            SORT_TYPE_DATA -> {
+
+            MoviesFragment.SORT_TYPE_DATA -> {
                 _listMovies.value?.sortBy { it.releasedData }
                 _listMovies.value = _listMovies.value
             }
         }
     }
+
+    fun removeFromList() {
+        _movie.value?.isWatched = false
+        _isAdded.value = false
+    }
+
+    fun addToList() {
+        _movie.value?.isWatched = true
+        _isAdded.value = true
+    }
+
 
     fun getListMovies() {
         if (listMovies.value.isNullOrEmpty()) {
