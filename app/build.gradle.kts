@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("kotlin-parcelize")
 }
 
 android {
@@ -44,16 +43,16 @@ android {
 dependencies {
 
     //Koin
-    implementation("io.insert-koin:koin-android:3.5.3")
+    implementation(libs.koin.android)
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     
     //ViewBinding
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+    implementation(libs.viewbindingpropertydelegate.full)
 
     //Picaso
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation(libs.picasso)
 
 
     implementation(libs.androidx.core.ktx)
