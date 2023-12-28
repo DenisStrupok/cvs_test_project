@@ -2,6 +2,7 @@ package com.cvs.test.project.features.movies
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cvs.test.project.databinding.ItemMovieBinding
@@ -14,7 +15,7 @@ import java.util.Date
 import java.util.Locale
 
 class MoviesAdapter(
-    private val onItemClick: (MovieModel) -> Unit
+    private val onItemClick: (String) -> Unit
 ) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     private var items = mutableListOf<MovieModel>()
@@ -53,7 +54,12 @@ class MoviesAdapter(
             item.itemMovieTitleTv.text = "${movie.title}($year)"
             item.itemMovieSubTitle.text = "${movie.duration} - ${movie.genre}"
             item.itemMovieContainer.setOnClickListener {
-                onItemClick.invoke(movie)
+                onItemClick.invoke(movie.title)
+            }
+            if (movie.isWatched){
+                item.itemMovieStatus.visibility = View.VISIBLE
+            }else{
+                item.itemMovieStatus.visibility = View.GONE
             }
         }
     }
